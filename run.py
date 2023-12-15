@@ -6,7 +6,7 @@ from util.replay_buffer import ReplayBuffer
 from smac.env import StarCraft2Env
 import seaborn as sns
 import matplotlib.pyplot as plt
-import time
+import datetime
 
 class Runner:
     def __init__(self, args):
@@ -31,6 +31,10 @@ class Runner:
         print("episode_limit={}".format(self.args.episode_limit))
         self.save_path =  args.save_path
         self.model_path = args.model_path
+
+        from tensorboardX import SummaryWriter
+        time_path = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        self.writer = SummaryWriter(log_dir='./result/tb_logs/{}/{}/{}_seed_{}_{}'.format(self.args.algorithm, self.env_name, self.env_name, self.seed,time_path))
 
         # Create N agents
         if args.algorithm in ['QMIX', 'VDN']:
@@ -100,20 +104,23 @@ class Runner:
         self.win_rates.append(win_rate)
         self.evaluate_reward.append(evaluate_reward)
         print("total_steps:{} \t win_rate:{} \t evaluate_reward:{}".format(self.total_steps, win_rate, evaluate_reward))
+        
+        if self.args.tb_plot:
+            self.writer.add_scalar('win_rate', win_rate, global_step=self.total_steps)
+        if self.args.sns_plot:
+            # # plot curve
+            sns.set_style('whitegrid')
+            plt.figure()
+            x_step = np.array(range(len(self.win_rates)))
+            ax = sns.lineplot(x=x_step, y=np.array(self.win_rates).flatten(), label=self.args.algorithm)
+            plt.ylabel('win_rates', fontsize=14)
+            plt.xlabel(f'step*{self.args.evaluate_freq}', fontsize=14)
+            plt.title(f'{self.args.algorithm} on {self.env_name}')
+            plt.savefig(f'{self.save_path}/{self.env_name}_seed{self.seed}.jpg')
 
-        # # plot curve
-        sns.set_style('whitegrid')
-        plt.figure()
-        x_step = np.array(range(len(self.win_rates)))
-        ax = sns.lineplot(x=x_step, y=np.array(self.win_rates).flatten(), label=self.args.algorithm)
-        plt.ylabel('win_rates', fontsize=14)
-        plt.xlabel(f'step*{self.args.evaluate_freq}', fontsize=14)
-        plt.title(f'{self.args.algorithm} on {self.env_name}')
-        plt.savefig(f'{self.save_path}/{self.env_name}_seed{self.seed}.jpg')
-
-        # Save the win rates
-        np.save(f'{self.save_path}/{self.env_name}_seed{self.seed}.npy', np.array(self.win_rates))
-        np.save(f'{self.save_path}/{self.env_name}_seed{self.seed}_return.npy', np.array(self.evaluate_reward))
+            # Save the win rates
+            np.save(f'{self.save_path}/{self.env_name}_seed{self.seed}.npy', np.array(self.win_rates))
+            np.save(f'{self.save_path}/{self.env_name}_seed{self.seed}_return.npy', np.array(self.evaluate_reward))
         
     def run_episode_smac(self, evaluate=False):
         win_tag = False

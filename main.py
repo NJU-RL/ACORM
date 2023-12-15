@@ -31,6 +31,10 @@ if __name__ == '__main__':
     parser.add_argument("--seed", type=int, default=123, help="random seed")
     parser.add_argument('--device', type=str, default='cuda:0')
     parser.add_argument('--env_name', type=str, default='MMM2')  #['3m', '8m', '2s3z']
+
+    # plot
+    parser.add_argument("--sns_plot", type=bool, default=False, help="Whether to use seaborn plot")
+    parser.add_argument("--tb_plot", type=bool, default=True, help="Whether to use tensorboard plot")
     
     # RECL
     parser.add_argument("--agent_embedding_dim", type=int, default=128, help="The dimension of the agent embedding")
