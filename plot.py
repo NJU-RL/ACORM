@@ -63,7 +63,7 @@ for sub_i, env_name in enumerate(env_names):
         print(alg)
         vdn_qmix_data = []
         for seed in range(4):
-            dir = (f'./result/{alg}/{env_name}_seed{seed}.npy')
+            dir = (f'./result/sacred/{alg}/{env_name}_seed{seed}.npy')
             if env_name in ['corridor','6h_vs_8z']:
                 data = np.load(dir, allow_pickle=True)[:980]
             elif env_name in ['3s5z_vs_3s6z']:
