@@ -46,7 +46,7 @@ Or you can  can modify the parameters of the `run.sh` file, then execute shell f
 ```python
 sh run.sh
 ```
-
+### Plot the result
 All results will be stored in the `results` folder. You can see the console output, config, and tensorboard logging in the `results/tb_logs` folder.
 
 You can plot the curve with `seaborn`:
