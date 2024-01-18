@@ -1,6 +1,6 @@
 # **Attention-Guided Contrastive Role Representations for Multi-agent Reinforcement Learning**
 
-Zican Hu, Zongzhang Zhang, Huaxiong Li, Chunlin Chen, Hongyu Ding, Zhi Wang
+Zican Hu, Zongzhang Zhang, Huaxiong Li, Chunlin Chen, Hongyu Ding, Zhi Wang*
 
 A link to our paper can be found on [arXiv](https://arxiv.org/abs/2312.04819)
 
