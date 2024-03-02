@@ -29,7 +29,7 @@ url={https://openreview.net/forum?id=LWmuPfEYhH}
 ## **experiment instructions**
 
 ### **Installation instructions**
-Download the Linux version 4.10 of StarCraft II from the Blizzard's [repository](https://github.com/Blizzard/s2client-proto#downloads).By default, the game is expected to be in `~/StarCraftII/` directory. 
+Download the Linux version 4.10 of StarCraft II from the Blizzard's [repository](https://github.com/Blizzard/s2client-proto#downloads). By default, the game is expected to be in `~/StarCraftII/` directory. 
 See `requirments.txt` file for more information about how to install the dependencies.
 ```python
 conda create -n acorm python=3.9.16 -y
