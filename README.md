@@ -15,7 +15,7 @@ ACORM tested on two benchmark tasks [SMAC ](https://github.com/oxwhirl/smac) and
 ## **Citation**
 
 Please cite our paper as:
-
+`
 @inproceedings{
 hu2024attentionguided,
 title={Attention-Guided Contrastive Role Representations for Multi-agent Reinforcement Learning},
@@ -24,6 +24,7 @@ booktitle={The Twelfth International Conference on Learning Representations},
 year={2024},
 url={https://openreview.net/forum?id=LWmuPfEYhH}
 }
+`
 
 ## **experiment instructions**
 
