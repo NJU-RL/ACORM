@@ -39,15 +39,15 @@ pip install -r requirements.txt
 
 ### Run an experiment
 
-You can execute the following command to run ACORM_QMIX with a map config, such as `MMM2`:
+You can execute the following command to run ACORM based on QMIX with a map config, such as `MMM2`:
 
 ```python
-python ACORM_QMIX/main.py --algorithm ACORM --env_name MMM2 --cluster_num 3 --max_train_steps 3050000
+python ./ACORM_QMIX/main.py --algorithm ACORM --env_name MMM2 --cluster_num 3 --max_train_steps 3050000
 ```
-or you can execute the following command to run ACORM_MAPPO with a map config, such as `corridor`
+or you can execute the following command to run ACORM base on MAPPO with a map config, such as `corridor`
 
 ```python
-python ACORM_MAPPO/main.py --algorithm ACORM --env_name corridor --cluster_num 3 --max_train_steps 5050000
+python ./ACORM_MAPPO/main.py --algorithm ACORM --env_name corridor --cluster_num 3 --max_train_steps 5050000
 ```
 
 All results will be stored in the `ACORM_QMIX or ACORM_MAPPO/results` folder. You can see the console output, config, and tensorboard logging in the `ACORM_QMIX or ACORM_MAPPO/results/tb_logs` folder.
